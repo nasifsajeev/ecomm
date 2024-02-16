@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="container px-4 px-lg-5 mt-5 ">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-xl-4 justify-content-center">
+        {% for cart in cart %}
+        <div class="col mb-5 ">
+            <div class="card h-100">
+                <img class="card-img-top" src="{{cart.product.image.url}}" alt="..."/>
+                <div class="card-body p-4 ">
+                    <div class="text-center ">
+                        <h5 class="fw-bolder ">{{cart.product.product_name}}</h5>
+                        {{cart.product.price}}
+                    </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'placeorder_view' cart.id %}">place Order</a></div>
+
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cartdelete_view' cart.id %}">Remove</a></div>
+
+                </div>
+            </div>
+          
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
